@@ -27,8 +27,8 @@
 		C301DAD12C69D4A700980676 /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		C301DAD32C69DC2900980676 /* task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = task.h; sourceTree = "<group>"; };
 		C301DAD42C69DC8D00980676 /* task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = task.m; sourceTree = "<group>"; };
-		C301DAD62C69F12800980676 /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		C301DAD72C69F12800980676 /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		C301DAD92C6A019700980676 /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		C3653C172C69C5EE00A960BD /* TodoAppWorkShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoAppWorkShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3653C1A2C69C5EE00A960BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C3653C1B2C69C5EE00A960BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -79,8 +79,8 @@
 				C3653C1E2C69C5EE00A960BD /* SceneDelegate.m */,
 				C3653C202C69C5EE00A960BD /* ViewController.h */,
 				C3653C212C69C5EE00A960BD /* ViewController.m */,
-				C301DAD62C69F12800980676 /* AddViewController.h */,
 				C301DAD72C69F12800980676 /* AddViewController.m */,
+				C301DAD92C6A019700980676 /* AddViewController.h */,
 				C301DAD32C69DC2900980676 /* task.h */,
 				C301DAD42C69DC8D00980676 /* task.m */,
 				C3653C232C69C5EE00A960BD /* Main.storyboard */,

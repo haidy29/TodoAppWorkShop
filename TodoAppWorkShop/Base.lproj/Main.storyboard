@@ -203,6 +203,14 @@
                         <viewLayoutGuide key="safeArea" id="wvz-XC-vRc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="date" destination="Heb-3k-hjY" id="lLW-e8-IwV"/>
+                        <outlet property="lbldescription" destination="ChF-zT-FTK" id="uLJ-hR-qnI"/>
+                        <outlet property="lbltitle" destination="TLP-JS-UkL" id="AV2-WE-UZC"/>
+                        <outlet property="priority" destination="lX8-WQ-Ckl" id="1a1-V6-bw6"/>
+                        <outlet property="tf_dd_name" destination="TLP-JS-UkL" id="hqG-ft-dIX"/>
+                        <outlet property="type" destination="gln-WN-8DA" id="mdV-XU-U8v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJu-TO-jth" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

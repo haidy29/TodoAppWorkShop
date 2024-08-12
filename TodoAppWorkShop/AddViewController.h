@@ -4,22 +4,22 @@
 //
 //  Created by Sohila Ahmed on 12/08/2024.
 //
-#import <UIKit/UIKit.h>
-#import "Task.h"
+
 #import "ViewController.h"
+
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddViewController : UIViewController
-{
-//    NSUserDefaults *def;
-}
-@property (weak, nonatomic) IBOutlet UITextField *tf_dd_name;
-@property (weak, nonatomic) IBOutlet UITextView *tf_add_des;
-@property (weak, nonatomic) IBOutlet UILabel *l_add_date;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *pri_add;
+@interface AddViewController : ViewController
+@property (weak, nonatomic) IBOutlet UITextField *lbltitle;
+@property (weak, nonatomic) IBOutlet UITextView *lbldescription;
+@property (weak, nonatomic) IBOutlet UIDatePicker *date;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *priority;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *type;
 
-@property Task *task2;
-@property NSUserDefaults *def;
 @end
 
 NS_ASSUME_NONNULL_END
+
+
+
