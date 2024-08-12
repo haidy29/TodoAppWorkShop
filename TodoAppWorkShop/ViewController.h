@@ -9,6 +9,7 @@
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UITableView *img;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

@@ -39,11 +39,14 @@ static NSUserDefaults *def;
     
     if(tasks.count == 0){
         _label.text = @"Add Tasks";
+       
     }else{
         _label.text = @"";
+        
     }
     [_tableView reloadData];
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -70,6 +73,7 @@ static NSUserDefaults *def;
 - (IBAction)btnadd:(id)sender {
     AddViewController *add = [self.storyboard instantiateViewControllerWithIdentifier:@"AddViewController"];
     [self.navigationController pushViewController:add animated:YES];
+    [_tableView reloadData];
 }
 
 @end

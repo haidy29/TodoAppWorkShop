@@ -10,22 +10,81 @@
 @interface AddViewController ()
 
 @end
-
 @implementation AddViewController
+{
+}
+static NSMutableArray *todo;
 
++ (void)initialize{
+    todo = [NSMutableArray new];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _def = [NSUserDefaults standardUserDefaults];
+
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)addBut:(id)sender {
+    
+    if((_lbltitle.text.length > 0) && !([_lbldescription.text isEqualToString:@""])){
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add" message:@"Add New Task?" preferredStyle: UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            
+            NSData *data2 = [_def objectForKey:@"Task"];
+            todo=[NSKeyedUnarchiver unarchiveObjectWithData:data2];
+            
+            Task *task2 = [Task new];
+            task2.t_name = _lbltitle.text;
+            task2.t_des = _lbldescription.text;
+            task2.t_date = _date.date;
+            
+            if(self.type.selectedSegmentIndex == 0){
+                task2.t_img = @"1";
+                task2.t_priority = @"Low";
+            }else if (self.type.selectedSegmentIndex == 1){
+                task2.t_img = @"2";
+                task2.t_priority = @"Medium";
+            }else if(self.type.selectedSegmentIndex == 2){
+                task2.t_img = @"3";
+                task2.t_priority = @"High";
+                
+            }
+            
+            
+            [todo addObject:task2];
+            
+            NSDate *data = [NSKeyedArchiver archivedDataWithRootObject:todo];
+            [_def setObject:data forKey:@"Task"];
+            //[self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:(NO)];
+        }];
+        
+        UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        
+        [alert addAction:yes];
+        [alert addAction:no];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            printf("alert done \n");
+        }];
+    }
+    else{
+        UIAlertController *empty_alert = [UIAlertController alertControllerWithTitle:@"Empty Task" message:@"Please Add the Title And Description" preferredStyle: UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        [empty_alert addAction: ok];
+        [self presentViewController:empty_alert animated:YES completion:nil];
+        
+    }
+    
+    // ViewController *f = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
 }
-*/
+
+
+
 
 @end
