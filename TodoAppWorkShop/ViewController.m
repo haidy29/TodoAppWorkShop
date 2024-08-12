@@ -34,19 +34,25 @@ static NSUserDefaults *def;
     }
 }- (void)viewDidLoad {
     [super viewDidLoad];
-    NSDate *data2 = [def objectForKey:@"Task"];
-    tasks = [NSKeyedUnarchiver unarchiveObjectWithData: data2];
-    
-    if(tasks.count == 0){
-        _label.text = @"Add Tasks";
-       
-    }else{
-        _label.text = @"";
-        
-    }
-    [_tableView reloadData];
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [ super viewDidAppear:true ];
+    
+}
+    - (void)viewWillAppear:(BOOL)animated{
+        NSDate *data2 = [def objectForKey:@"Task"];
+        tasks = [NSKeyedUnarchiver unarchiveObjectWithData: data2];
+        
+        if(tasks.count == 0){
+            _label.text = @"Add Tasks";
+           
+        }else{
+            _label.text = @"";
+            
+        }
+        
+        [_tableView reloadData];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }

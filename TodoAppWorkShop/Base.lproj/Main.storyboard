@@ -90,6 +90,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="label" destination="Lqq-QO-mZl" id="lKe-93-PeI"/>
+                        <outlet property="tableView" destination="dfw-hp-l6a" id="jZr-Cj-Z6j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qHX-SK-A4u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

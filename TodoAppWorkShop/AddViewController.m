@@ -40,14 +40,14 @@ static NSMutableArray *todo;
             task2.t_des = _lbldescription.text;
             task2.t_date = _date.date;
             
-            if(self.type.selectedSegmentIndex == 0){
-                task2.t_img = @"1";
+            if(self.priority.selectedSegmentIndex == 0){
+                task2.t_img = @"low";
                 task2.t_priority = @"Low";
-            }else if (self.type.selectedSegmentIndex == 1){
-                task2.t_img = @"2";
+            }else if (self.priority.selectedSegmentIndex == 1){
+                task2.t_img = @"medium";
                 task2.t_priority = @"Medium";
-            }else if(self.type.selectedSegmentIndex == 2){
-                task2.t_img = @"3";
+            }else if(self.priority.selectedSegmentIndex == 2){
+                task2.t_img = @"high2";
                 task2.t_priority = @"High";
                 
             }
