@@ -291,13 +291,13 @@
                                 <color key="textColor" red="0.051352232689999999" green="0.032640188930000001" blue="0.032140467319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0cp-2u-4XX">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="0cp-2u-4XX">
                                 <rect key="frame" x="134" y="568" width="224" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="ToDo"/>
-                                    <segment title="InProgress" enabled="NO"/>
-                                    <segment title="Done" enabled="NO"/>
+                                    <segment title="InProgress"/>
+                                    <segment title="Done"/>
                                 </segments>
                             </segmentedControl>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Todoimg" translatesAutoresizingMaskIntoConstraints="NO" id="KSO-Xw-oAC">

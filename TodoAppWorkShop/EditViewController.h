@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import "Task.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *prioritysegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *Typesegment;
-
+@property Task *edit_task;
+@property int index;
 @end
 
 NS_ASSUME_NONNULL_END

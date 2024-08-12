@@ -12,11 +12,27 @@
 @end
 
 @implementation EditViewController
+{
+    
+}
+static NSUserDefaults *def;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _lbltitle.text =  _edit_task.t_name;
+    _lbldes.text = _edit_task.t_des;
+    _datePicker.date = _edit_task.t_date;
+    if([_edit_task.t_priority  isEqualToString: @"Low"]){
+        self.prioritysegment.selectedSegmentIndex = 0;
+    }else if([_edit_task.t_priority  isEqual: @"Medium"]){
+        self.prioritysegment.selectedSegmentIndex = 1;
+    }else if([_edit_task.t_priority  isEqual: @"High"]){
+        self.prioritysegment.selectedSegmentIndex = 2;
+    }
+    def = [NSUserDefaults standardUserDefaults];
+
 }
+
 
 /*
 #pragma mark - Navigation
@@ -28,6 +44,7 @@
 }
 */
 - (IBAction)btnedit:(id)sender {
+    
 }
 
 @end

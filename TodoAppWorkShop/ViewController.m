@@ -8,6 +8,8 @@
 #import "ViewController.h"
 #import "Task.h"
 #import "AddViewController.h"
+#import "EditViewController.h"
+
 
 
 
@@ -76,10 +78,44 @@ static NSUserDefaults *def;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    EditViewController *Details = [self.storyboard instantiateViewControllerWithIdentifier:@"EditViewController"];
+    Details.edit_task = [tasks objectAtIndex:indexPath.row];
+    Details.index = indexPath.row;
+    [self.navigationController pushViewController:Details animated:YES];
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete" message:@"Delete Task?" preferredStyle: UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        if (editingStyle == UITableViewCellEditingStyleDelete) {
+            [tasks removeObjectAtIndex:indexPath.row];
+            
+            NSDate *date = [NSKeyedArchiver archivedDataWithRootObject:tasks];
+            [def setObject:date forKey:@"Task"];
+            // Delete the row from the data source
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        }
+        [self.tableView reloadData];
+    }];
+    
+    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [alert addAction:yes];
+    [alert addAction:no];
+    
+    [self presentViewController:alert animated:YES completion:^{
+        printf("alert done \n");
+    }];
+    [_tableView reloadData];
+}
 - (IBAction)btnadd:(id)sender {
     AddViewController *add = [self.storyboard instantiateViewControllerWithIdentifier:@"AddViewController"];
     [self.navigationController pushViewController:add animated:YES];
-    [_tableView reloadData];
 }
 
 @end
