@@ -41,7 +41,8 @@ static NSUserDefaults *def;
     
     NSDate *progress_data = [def objectForKey:@"InProgress"];
     progress = [NSKeyedUnarchiver unarchiveObjectWithData: progress_data];
-
+   
+    
     [_tableView reloadData];
 }
 
@@ -156,19 +157,31 @@ static NSUserDefaults *def;
 //}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    NSString *str = @"";
-    switch(section){
-        case 0: //low
-            str = @"low";
-            break;
-        case 1: //medium
-            str = @"medium";
-            break;
-        case 2: //high
-            str = @"high";
-            break;
+    if(progress.count == 0){
+        //_label.text = @"Add Tasks";
+        
+        _tableView.hidden = YES;
+        return @"" ;
+    }else{
+        //_label.text = @"";
+        _tableView.hidden = NO;
+        
+        
+        NSString *str = @"";
+        switch(section){
+            case 0: //low
+                str = @"low";
+                break;
+            case 1: //medium
+                str = @"medium";
+                break;
+            case 2: //high
+                str = @"high";
+                break;
+        }
+        
+        return str;
     }
-    return str;
 }
 
  

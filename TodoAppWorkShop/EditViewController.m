@@ -90,8 +90,8 @@ static NSUserDefaults *def;
             t.t_img = @"medium";
             t.t_priority = @"Medium";
         }else if(self.prioritysegment.selectedSegmentIndex == 2){
-            t.t_img = @"3";
-            t.t_priority = @"high2";
+            t.t_img = @"high2";
+            t.t_priority = @"High";
             
         }
         if(self.Typesegment.selectedSegmentIndex == 0){
