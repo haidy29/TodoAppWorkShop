@@ -51,7 +51,7 @@ static NSMutableArray *todo;
                 task2.t_priority = @"High";
                 
             }
-            
+            task2.t_state = @"Todo";
             
             [todo addObject:task2];
             

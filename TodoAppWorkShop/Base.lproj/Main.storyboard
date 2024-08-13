@@ -37,7 +37,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ifP-hV-xKn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" id="ifP-hV-xKn">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ifP-hV-xKn" id="9wN-rc-fat">
@@ -47,6 +47,10 @@
                                         <color key="backgroundColor" systemColor="systemMintColor"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="EWH-Nw-RNj" id="2sw-A9-tgI"/>
+                                    <outlet property="delegate" destination="EWH-Nw-RNj" id="vKv-PJ-gXL"/>
+                                </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IdA-zV-v4W">
                                 <rect key="frame" x="0.0" y="105" width="393" height="32"/>
@@ -56,6 +60,9 @@
                                     <segment title="Medium"/>
                                     <segment title="High"/>
                                 </segments>
+                                <connections>
+                                    <action selector="progressAction:" destination="EWH-Nw-RNj" eventType="valueChanged" id="TcB-jR-rkF"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FMy-6c-2mV"/>
@@ -69,28 +76,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysj-ui-Lk7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823.66412213740455" y="100.70422535211269"/>
+            <point key="canvasLocation" x="613" y="101"/>
         </scene>
-        <!--View Controller-->
+        <!--todo-->
         <scene sceneID="bBi-La-gVF">
             <objects>
-                <viewController id="6QC-3o-HpY" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="todo" id="6QC-3o-HpY" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sLq-5X-YG9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lqq-QO-mZl">
+                                <rect key="frame" x="0.0" y="103" width="393" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NoTasks" translatesAutoresizingMaskIntoConstraints="NO" id="334-kp-5hA">
+                                <rect key="frame" x="76" y="290" width="240" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dfw-hp-l6a">
                                 <rect key="frame" x="0.0" y="54" width="393" height="798"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="systemMintColor"/>
-                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lqq-QO-mZl">
-                                    <rect key="frame" x="0.0" y="161" width="393" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="29"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="83" id="yBX-yo-X3e">
                                         <rect key="frame" x="0.0" y="50" width="393" height="83"/>
@@ -120,6 +131,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="img" destination="334-kp-5hA" id="eC9-XP-e2P"/>
                         <outlet property="label" destination="Lqq-QO-mZl" id="lKe-93-PeI"/>
                         <outlet property="tableView" destination="dfw-hp-l6a" id="jZr-Cj-Z6j"/>
                     </connections>
@@ -208,7 +220,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gln-WN-8DA">
-                                <rect key="frame" x="143" y="565" width="224" height="32"/>
+                                <rect key="frame" x="141" y="565" width="236" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="ToDo"/>
@@ -216,7 +228,7 @@
                                     <segment title="Done" enabled="NO"/>
                                 </segments>
                             </segmentedControl>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Todoimg" translatesAutoresizingMaskIntoConstraints="NO" id="V7h-ZJ-PTu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Todo" translatesAutoresizingMaskIntoConstraints="NO" id="V7h-ZJ-PTu">
                                 <rect key="frame" x="92" y="116" width="209" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -292,7 +304,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9JF-af-8F6">
-                                <rect key="frame" x="134" y="513" width="229" height="32"/>
+                                <rect key="frame" x="134" y="513" width="259" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Low"/>
@@ -323,7 +335,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0cp-2u-4XX">
-                                <rect key="frame" x="134" y="568" width="224" height="32"/>
+                                <rect key="frame" x="125" y="568" width="252" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="ToDo"/>
@@ -331,7 +343,7 @@
                                     <segment title="Done"/>
                                 </segments>
                             </segmentedControl>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Todoimg" translatesAutoresizingMaskIntoConstraints="NO" id="KSO-Xw-oAC">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Todo" translatesAutoresizingMaskIntoConstraints="NO" id="KSO-Xw-oAC">
                                 <rect key="frame" x="92" y="116" width="209" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -368,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTU-8a-kbc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2276" y="-877"/>
+            <point key="canvasLocation" x="2275.5725190839694" y="-877.46478873239437"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pGQ-Zq-rak">
@@ -403,10 +415,18 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Pnz-i4-s2i">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemMintColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
-                        <navigationBarAppearance key="standardAppearance"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <barButtonItemAppearance key="backButtonAppearance">
+                                <barButtonItemStateAppearance key="normal" backgroundImage="arrowshape.turn.up.left.fill" catalog="system"/>
+                                <barButtonItemStateAppearance key="highlighted"/>
+                                <barButtonItemStateAppearance key="disabled"/>
+                                <barButtonItemStateAppearance key="focused"/>
+                            </barButtonItemAppearance>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -459,7 +479,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Todoimg" width="172" height="128"/>
+        <image name="NoTasks" width="522" height="548"/>
+        <image name="Todo" width="314" height="332"/>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="104"/>
         <image name="checklist.checked" catalog="system" width="128" height="107"/>
         <image name="checklist.unchecked" catalog="system" width="128" height="107"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>

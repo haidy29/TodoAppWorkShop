@@ -42,10 +42,40 @@ static NSUserDefaults *def;
         self.prioritysegment.selectedSegmentIndex = 2;
     }
     
+    if([_edit_task.t_state  isEqualToString: @"Todo"]){
+        self.Typesegment.selectedSegmentIndex = 0;
+    }else if([_edit_task.t_state  isEqual: @"InProgress"]){
+        self.Typesegment.selectedSegmentIndex = 1;
+    }else if([_edit_task.t_state  isEqual: @"Done"]){
+        self.Typesegment.selectedSegmentIndex = 2;
+    }
+    
     def = [NSUserDefaults standardUserDefaults];
-    NSDate *data2 = [def objectForKey:@"Task"];
-    todo_tasks = [NSKeyedUnarchiver unarchiveObjectWithData: data2];
+    
+    if([_edit_task.t_state  isEqualToString: @"Todo"]){
+        [_Typesegment setEnabled:YES forSegmentAtIndex:0];
+        [_Typesegment setEnabled:YES forSegmentAtIndex:1];
+        [_Typesegment setEnabled:YES forSegmentAtIndex:2];
+        NSDate *data2 = [def objectForKey:@"Task"];
+        todo_tasks = [NSKeyedUnarchiver unarchiveObjectWithData: data2];
+    }else if ([_edit_task.t_state  isEqualToString: @"InProgress"]){
+        [_Typesegment setEnabled:NO forSegmentAtIndex:0];
+        [_Typesegment setEnabled:YES forSegmentAtIndex:1];
+        [_Typesegment setEnabled:YES forSegmentAtIndex:2];
+        
+        NSData *data3 = [def objectForKey:@"InProgress"];
+        inProgress_tasks = [NSKeyedUnarchiver unarchiveObjectWithData: data3];
+    }else if ([_edit_task.t_state  isEqualToString: @"Done"]){
+        [_Typesegment setEnabled:NO forSegmentAtIndex:0];
+        [_Typesegment setEnabled:NO forSegmentAtIndex:1];
+        [_Typesegment setEnabled:YES forSegmentAtIndex:2];
+        
+        NSData *data4 = [def objectForKey:@"Done"];
+        done_tasks = [NSKeyedUnarchiver unarchiveObjectWithData: data4];
+    }
 }
+
+
 - (IBAction)btnedit:(id)sender {
     if((_lbltitle.text.length > 0) && !([_lbldes.text isEqualToString:@""])){
         Task *t = [Task new];
@@ -71,17 +101,51 @@ static NSUserDefaults *def;
         }else if(self.Typesegment.selectedSegmentIndex == 2){
             t.t_state = @"Done";
         }
-        if([t.t_state isEqualToString:@"Todo"]){
+        // check old state
+        // todo -> replace, or delete from todo
+        // inprogress -> replace, or delete from inprogress
+        // done -> replace, or delete from done
+        
+        
+        // dont change state (just edit title or desc or prio) -> replacre
+        if (([t.t_state isEqualToString:@"Todo"]) && ([_edit_task.t_state isEqualToString:@"Todo"])) {
             
             [todo_tasks replaceObjectAtIndex:_index withObject:t];
             NSDate *data = [NSKeyedArchiver archivedDataWithRootObject:todo_tasks];
             [def setObject:data forKey:@"Task"];
             
         }
+        else if (([t.t_state isEqualToString:@"InProgress"]) && ([_edit_task.t_state isEqualToString:@"InProgress"])) {
+            
+            [inProgress_tasks replaceObjectAtIndex:_index withObject:t];
+            NSDate *data = [NSKeyedArchiver archivedDataWithRootObject:inProgress_tasks];
+            [def setObject:data forKey:@"InProgress"];
+            
+        } else if (([t.t_state isEqualToString:@"Done"]) && ([_edit_task.t_state isEqualToString:@"Done"])) {
+            
+            [done_tasks replaceObjectAtIndex:_index withObject:t];
+            NSDate *data = [NSKeyedArchiver archivedDataWithRootObject:done_tasks];
+            [def setObject:data forKey:@"Done"];
+        }
+        
+        // new state
+        // change state -> delete from old array state
+        // then check if there userdefult for new state or not
+        // if there add new objcet,  if not create new user dafult and add object
         else if([t.t_state isEqualToString:@"InProgress"]){
-            [todo_tasks removeObjectAtIndex:_index];
-            NSDate *data1 = [NSKeyedArchiver archivedDataWithRootObject:todo_tasks];
-            [def setObject:data1 forKey:@"Task"];
+            
+            // delete from old state
+            if ([_edit_task.t_state isEqualToString:@"Todo"]){
+                [todo_tasks removeObjectAtIndex:_index];
+                NSDate *data1 = [NSKeyedArchiver archivedDataWithRootObject:todo_tasks];
+                [def setObject:data1 forKey:@"Task"];
+            }else if ([_edit_task.t_state isEqualToString:@"Done"]){
+                [done_tasks removeObjectAtIndex:_index];
+                NSDate *data1 = [NSKeyedArchiver archivedDataWithRootObject:done_tasks];
+                [def setObject:data1 forKey:@"Done"];
+            }
+            
+            
             if([def objectForKey:@"InProgress"] == nil){
                 //if inprogress empty archive
                 [inProgress_tasks addObject:t];
@@ -99,22 +163,31 @@ static NSUserDefaults *def;
             
         }
         else if([t.t_state isEqualToString:@"Done"]){
-            [todo_tasks removeObjectAtIndex:_index];
-            NSDate *date1 = [NSKeyedArchiver archivedDataWithRootObject:todo_tasks];
-            [def setObject:date1 forKey:@"Task"];
-            NSUserDefaults *defa = [NSUserDefaults standardUserDefaults];
+            
+            if ([_edit_task.t_state isEqualToString:@"Todo"]){
+                [todo_tasks removeObjectAtIndex:_index];
+                NSDate *data1 = [NSKeyedArchiver archivedDataWithRootObject:todo_tasks];
+                [def setObject:data1 forKey:@"Task"];
+            }else if ([_edit_task.t_state isEqualToString:@"InProgress"]){
+                [inProgress_tasks removeObjectAtIndex:_index];
+                NSDate *data1 = [NSKeyedArchiver archivedDataWithRootObject:inProgress_tasks];
+                [def setObject:data1 forKey:@"InProgress"];
+            }
+            
+            
+            //NSUserDefaults *defa = [NSUserDefaults standardUserDefaults];
             
             if([def objectForKey:@"Done"] == nil){
                 [done_tasks addObject:t];
                 NSDate *data3 = [NSKeyedArchiver archivedDataWithRootObject:done_tasks];
-                [defa setObject:data3 forKey:@"Done"];
+                [def setObject:data3 forKey:@"Done"];
             }else if([def objectForKey:@"Done"] != nil){
-                NSData *data4 = [defa objectForKey:@"Done"];
+                NSData *data4 = [def objectForKey:@"Done"];
                 done_tasks = [NSKeyedUnarchiver unarchiveObjectWithData:data4];
                 
                 [done_tasks addObject:t];
                 NSDate *data_done = [NSKeyedArchiver archivedDataWithRootObject:done_tasks];
-                [defa setObject:data_done forKey:@"Done"];
+                [def setObject:data_done forKey:@"Done"];
             }
             
             

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIDatePicker *date;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *priority;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *type;
+
 @property Task *task2;
 @property NSUserDefaults *def;
 @end

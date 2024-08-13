@@ -47,9 +47,12 @@ static NSUserDefaults *def;
         
         if(tasks.count == 0){
             _label.text = @"Add Tasks";
+            
+            _tableView.hidden = YES;
            
         }else{
             _label.text = @"";
+            _tableView.hidden = NO;
             
         }
         
