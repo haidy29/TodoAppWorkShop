@@ -20,7 +20,7 @@
 @implementation ViewController{
     
 }
-
+static NSMutableArray *Filteredtasks;
 static NSMutableArray *first_task;
 static NSMutableArray *tasks;
 static NSUserDefaults *def;
@@ -29,7 +29,8 @@ static NSUserDefaults *def;
     first_task = [NSMutableArray new];
     tasks = [NSMutableArray new];
     def = [NSUserDefaults standardUserDefaults];
-    
+    Filteredtasks = [NSMutableArray new];
+
     if([def objectForKey:@"Task"] == nil){
         NSDate *data = [NSKeyedArchiver archivedDataWithRootObject:first_task];
         [def setObject:data forKey:@"Task"];
@@ -120,5 +121,6 @@ static NSUserDefaults *def;
     AddViewController *add = [self.storyboard instantiateViewControllerWithIdentifier:@"AddViewController"];
     [self.navigationController pushViewController:add animated:YES];
 }
+
 
 @end

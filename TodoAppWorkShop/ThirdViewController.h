@@ -9,7 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ThirdViewController : ViewController
+@interface ThirdViewController :  UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property int index_done;
+@property bool filter;
 
 @end
 
