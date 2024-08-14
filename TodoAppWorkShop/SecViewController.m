@@ -37,7 +37,7 @@ static NSUserDefaults *def;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.prograsspri.selectedSegmentIndex = UISegmentedControlNoSegment;
+//    self.prograsspri.selectedSegmentIndex = UISegmentedControlNoSegment;
     
     NSDate *progress_data = [def objectForKey:@"InProgress"];
     progress = [NSKeyedUnarchiver unarchiveObjectWithData: progress_data];
