@@ -154,7 +154,7 @@ static NSDate *data;
                     str = @"medium";
                     break;
                 case 2:
-                    str = @"High";
+                    str = @"high";
                     break;
             }}
         else{

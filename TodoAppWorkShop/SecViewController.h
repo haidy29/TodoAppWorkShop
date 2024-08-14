@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SecViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UISegmentedControl *prograsspri;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property bool filter;
 
 @end
 

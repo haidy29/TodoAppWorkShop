@@ -30,7 +30,7 @@ static NSUserDefaults *def;
     tasks = [NSMutableArray new];
     def = [NSUserDefaults standardUserDefaults];
     Filteredtasks = [NSMutableArray new];
-
+    
     if([def objectForKey:@"Task"] == nil){
         NSDate *data = [NSKeyedArchiver archivedDataWithRootObject:first_task];
         [def setObject:data forKey:@"Task"];
@@ -42,22 +42,22 @@ static NSUserDefaults *def;
     [ super viewDidAppear:true ];
     
 }
-    - (void)viewWillAppear:(BOOL)animated{
-        NSDate *data2 = [def objectForKey:@"Task"];
-        tasks = [NSKeyedUnarchiver unarchiveObjectWithData: data2];
+- (void)viewWillAppear:(BOOL)animated{
+    NSDate *data2 = [def objectForKey:@"Task"];
+    tasks = [NSKeyedUnarchiver unarchiveObjectWithData: data2];
+    
+    if(tasks.count == 0){
+        _label.text = @"Add Tasks";
         
-        if(tasks.count == 0){
-            _label.text = @"Add Tasks";
-            
-            _tableView.hidden = YES;
-           
-        }else{
-            _label.text = @"";
-            _tableView.hidden = NO;
-            
-        }
+        _tableView.hidden = YES;
         
-        [_tableView reloadData];
+    }else{
+        _label.text = @"";
+        _tableView.hidden = NO;
+        
+    }
+    
+    [_tableView reloadData];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -70,9 +70,9 @@ static NSUserDefaults *def;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-//    if(tasks.count == 0){
-//        _label.text = @"Add Tasks";
-//    }
+    //    if(tasks.count == 0){
+    //        _label.text = @"Add Tasks";
+    //    }
     cell.textLabel.text = [[tasks objectAtIndex:indexPath.row ] t_name];
     cell.imageView.image = [UIImage imageNamed:[[tasks objectAtIndex:indexPath.row ] t_img]];
     
