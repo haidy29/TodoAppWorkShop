@@ -40,9 +40,10 @@ static NSUserDefaults *def;
 }
 - (void)viewDidAppear:(BOOL)animated{
     [ super viewDidAppear:true ];
-    
+   
 }
 - (void)viewWillAppear:(BOOL)animated{
+    _txt.text = @"";
     NSDate *data2 = [def objectForKey:@"Task"];
     tasks = [NSKeyedUnarchiver unarchiveObjectWithData: data2];
     allTasks = [NSKeyedUnarchiver unarchiveObjectWithData: data2];
