@@ -1,5 +1,4 @@
 
-Todo List 
 # Todo List
 
 # The App is a Todo List application that:
